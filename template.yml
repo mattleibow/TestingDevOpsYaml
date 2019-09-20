@@ -1,0 +1,10 @@
+
+parameters:
+  downloadExternals: ''
+
+steps:
+  - ${{ if ne(parameters.downloadExternals, '') }}:
+      - pwsh: echo "not blank --${{ parameters.downloadExternals }}--"
+  - ${{ if eq(parameters.downloadExternals, '') }}:
+      - pwsh: echo "blank --${{ parameters.downloadExternals }}--"
+
