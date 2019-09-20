@@ -1,7 +1,7 @@
 
 parameters:
-  first: ''
-  second: ''
+  firstBlank: ''
+  firstValue: ''
   apples: ''
 
 jobs:
@@ -9,27 +9,27 @@ jobs:
     pool:
       name: 'Hosted Ubuntu 1604'
     steps:
-      - ${{ if ne(parameters.first, '') }}:
-          - pwsh: echo "'first' is not blank --${{ parameters.first }}--"
-      - ${{ if eq(parameters.first, '') }}:
-          - pwsh: echo "'first' is blank --${{ parameters.first }}--"
+      - ${{ if ne(parameters.firstBlank, '') }}:
+          - pwsh: echo "'firstBlank' is not blank --${{ parameters.firstBlank }}--"
+      - ${{ if eq(parameters.firstBlank, '') }}:
+          - pwsh: echo "'firstBlank' is blank --${{ parameters.firstBlank }}--"
 
-      - ${{ if ne(parameters.second, '') }}:
-          - pwsh: echo "'second' is not blank --${{ parameters.second }}--"
-      - ${{ if eq(parameters.second, '') }}:
-          - pwsh: echo "'second' is blank --${{ parameters.second }}--"
+      - ${{ if ne(parameters.firstValue, '') }}:
+          - pwsh: echo "'firstValue' is not blank --${{ parameters.firstValue }}--"
+      - ${{ if eq(parameters.firstValue, '') }}:
+          - pwsh: echo "'firstValue' is blank --${{ parameters.firstValue }}--"
 
       - ${{ if ne(parameters.apples, '') }}:
           - pwsh: echo "'apples' is not blank --${{ parameters.apples }}--"
       - ${{ if eq(parameters.apples, '') }}:
           - pwsh: echo "'apples' is blank --${{ parameters.apples }}--"
 
-      - ${{ if ne('$(ANOTHER_VARIABLE)', '') }}:
-          - pwsh: echo "'ANOTHER_VARIABLE' is not blank --$(ANOTHER_VARIABLE)--"
-      - ${{ if eq('$(ANOTHER_VARIABLE)', '') }}:
-          - pwsh: echo "'ANOTHER_VARIABLE' is blank --$(ANOTHER_VARIABLE)--"
+      - ${{ if ne('$(SECOND_BLANK)', '') }}:
+          - pwsh: echo "'SECOND_BLANK' is not blank --$(SECOND_BLANK)--"
+      - ${{ if eq('$(SECOND_BLANK)', '') }}:
+          - pwsh: echo "'SECOND_BLANK' is blank --$(SECOND_BLANK)--"
 
-      - ${{ if ne('$(THIRD_VARIABLE)', '') }}:
-          - pwsh: echo "'THIRD_VARIABLE' is not blank --$(THIRD_VARIABLE)--"
-      - ${{ if eq('$(THIRD_VARIABLE)', '') }}:
-          - pwsh: echo "'THIRD_VARIABLE' is blank --$(THIRD_VARIABLE)--"
+      - ${{ if ne('$(SECOND_VALUE)', '') }}:
+          - pwsh: echo "'SECOND_VALUE' is not blank --$(SECOND_VALUE)--"
+      - ${{ if eq('$(SECOND_VALUE)', '') }}:
+          - pwsh: echo "'SECOND_VALUE' is blank --$(SECOND_VALUE)--"

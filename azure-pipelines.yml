@@ -1,28 +1,28 @@
 
 variables:
-  FIRST_VARIABLE: ''
-  SECOND_VARIABLE: '123'
-  ANOTHER_VARIABLE: ''
-  THIRD_VARIABLE: 'abc'
+  FIRST_BLANK: ''
+  FIRST_VALUE: '123'
+  SECOND_BLANK: ''
+  SECOND_VALUE: 'abc'
 
 jobs:
   - template: template.yml
     parameters:
-      first: $(FIRST_VARIABLE)
-      second: $(SECOND_VARIABLE)
+      firstBlank: $(FIRST_BLANK)
+      firstValue: $(FIRST_VALUE)
       apples: ''
 
   - job: main_build
     pool:
       name: 'Hosted Ubuntu 1604'
     steps:
-      - ${{ if ne('$(ANOTHER_VARIABLE)', '') }}:
-          - pwsh: echo "'ANOTHER_VARIABLE' is not blank --$(ANOTHER_VARIABLE)--"
-      - ${{ if eq('$(ANOTHER_VARIABLE)', '') }}:
-          - pwsh: echo "'ANOTHER_VARIABLE' is blank --$(ANOTHER_VARIABLE)--"
+      - ${{ if ne('$(SECOND_BLANK)', '') }}:
+          - pwsh: echo "'SECOND_BLANK' is not blank --$(SECOND_BLANK)--"
+      - ${{ if eq('$(SECOND_BLANK)', '') }}:
+          - pwsh: echo "'SECOND_BLANK' is blank --$(SECOND_BLANK)--"
 
-      - ${{ if ne('$(THIRD_VARIABLE)', '') }}:
-          - pwsh: echo "'THIRD_VARIABLE' is not blank --$(THIRD_VARIABLE)--"
-      - ${{ if eq('$(THIRD_VARIABLE)', '') }}:
-          - pwsh: echo "'THIRD_VARIABLE' is blank --$(THIRD_VARIABLE)--"
+      - ${{ if ne('$(SECOND_VALUE)', '') }}:
+          - pwsh: echo "'SECOND_VALUE' is not blank --$(SECOND_VALUE)--"
+      - ${{ if eq('$(SECOND_VALUE)', '') }}:
+          - pwsh: echo "'SECOND_VALUE' is blank --$(SECOND_VALUE)--"
 
