@@ -14,7 +14,7 @@ jobs:
 
   - job: main_build
     pool:
-      name: 'Ubuntu 1604'
+      name: 'Hosted Ubuntu 1604'
     steps:
       - ${{ if ne('$(ANOTHER_VARIABLE)', '') }}:
           - pwsh: echo "'ANOTHER_VARIABLE' is not blank --$(ANOTHER_VARIABLE)--"
