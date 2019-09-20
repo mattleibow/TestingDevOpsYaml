@@ -1,10 +1,31 @@
 
 parameters:
-  downloadExternals: ''
+  first: ''
+  second: ''
+  apples: ''
 
 steps:
-  - ${{ if ne(parameters.downloadExternals, '') }}:
-      - pwsh: echo "not blank --${{ parameters.downloadExternals }}--"
-  - ${{ if eq(parameters.downloadExternals, '') }}:
-      - pwsh: echo "blank --${{ parameters.downloadExternals }}--"
+  - ${{ if ne(parameters.first, '') }}:
+      - pwsh: echo "'first' is not blank --${{ parameters.first }}--"
+  - ${{ if eq(parameters.first, '') }}:
+      - pwsh: echo "'first' is blank --${{ parameters.first }}--"
 
+  - ${{ if ne(parameters.second, '') }}:
+      - pwsh: echo "'second' is not blank --${{ parameters.second }}--"
+  - ${{ if eq(parameters.second, '') }}:
+      - pwsh: echo "'second' is blank --${{ parameters.second }}--"
+
+  - ${{ if ne(parameters.apples, '') }}:
+      - pwsh: echo "'apples' is not blank --${{ parameters.apples }}--"
+  - ${{ if eq(parameters.apples, '') }}:
+      - pwsh: echo "'apples' is blank --${{ parameters.apples }}--"
+
+  - ${{ if ne('$(ANOTHER_VARIABLE)', '') }}:
+      - pwsh: echo "'ANOTHER_VARIABLE' is not blank --$(ANOTHER_VARIABLE)--"
+  - ${{ if eq('$(ANOTHER_VARIABLE)', '') }}:
+      - pwsh: echo "'ANOTHER_VARIABLE' is blank --$(ANOTHER_VARIABLE)--"
+
+  - ${{ if ne('$(THIRD_VARIABLE)', '') }}:
+      - pwsh: echo "'THIRD_VARIABLE' is not blank --$(THIRD_VARIABLE)--"
+  - ${{ if eq('$(THIRD_VARIABLE)', '') }}:
+      - pwsh: echo "'THIRD_VARIABLE' is blank --$(THIRD_VARIABLE)--"

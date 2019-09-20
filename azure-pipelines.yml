@@ -1,8 +1,13 @@
 
 variables:
-  downloadExternals: ''
+  FIRST_VARIABLE: ''
+  SECOND_VARIABLE: '123'
+  ANOTHER_VARIABLE: ''
+  THIRD_VARIABLE: 'abc'
 
 steps:
   - template: template.yml
     parameters:
-      downloadExternals: $(downloadExternals)
+      first: $(FIRST_VARIABLE)
+      second: $(SECOND_VARIABLE)
+      apples: ''
