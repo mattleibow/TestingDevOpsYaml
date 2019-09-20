@@ -7,7 +7,7 @@ parameters:
 jobs:
   - job: template_build
     pool:
-      name: 'Ubuntu 16.04'
+      name: 'Ubuntu 1604'
     steps:
       - ${{ if ne(parameters.first, '') }}:
           - pwsh: echo "'first' is not blank --${{ parameters.first }}--"
