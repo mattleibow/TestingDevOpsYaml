@@ -5,9 +5,24 @@ variables:
   ANOTHER_VARIABLE: ''
   THIRD_VARIABLE: 'abc'
 
-steps:
+jobs:
   - template: template.yml
     parameters:
       first: $(FIRST_VARIABLE)
       second: $(SECOND_VARIABLE)
       apples: ''
+
+  - job: main_build
+    pool:
+      name: 'Ubuntu 16.04'
+    steps:
+      - ${{ if ne('$(ANOTHER_VARIABLE)', '') }}:
+          - pwsh: echo "'ANOTHER_VARIABLE' is not blank --$(ANOTHER_VARIABLE)--"
+      - ${{ if eq('$(ANOTHER_VARIABLE)', '') }}:
+          - pwsh: echo "'ANOTHER_VARIABLE' is blank --$(ANOTHER_VARIABLE)--"
+
+      - ${{ if ne('$(THIRD_VARIABLE)', '') }}:
+          - pwsh: echo "'THIRD_VARIABLE' is not blank --$(THIRD_VARIABLE)--"
+      - ${{ if eq('$(THIRD_VARIABLE)', '') }}:
+          - pwsh: echo "'THIRD_VARIABLE' is blank --$(THIRD_VARIABLE)--"
+
