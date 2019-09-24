@@ -4,6 +4,7 @@ variables:
   FIRST_VALUE: '123'
   SECOND_BLANK: ''
   SECOND_VALUE: 'abc'
+  BUILD_NUMBER: $[counter('$(Build.SourceBranchName)_counter', 1)]
 
 jobs:
   - template: template.yml
@@ -16,6 +17,8 @@ jobs:
     pool:
       name: 'Hosted Ubuntu 1604'
     steps:
+      - pwsh: echo $env:BUILD_NUMBER
+
       - ${{ if ne('$(SECOND_BLANK)', '') }}:
           - pwsh: echo "'SECOND_BLANK' is not blank --$(SECOND_BLANK)--"
       - ${{ if eq('$(SECOND_BLANK)', '') }}:
