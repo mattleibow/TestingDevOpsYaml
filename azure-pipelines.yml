@@ -1,9 +1,9 @@
 
 variables:
   FIRST_BLANK: ''
-  FIRST_VALUE: '123'
+  FIRST_VALUE: '456'
   SECOND_BLANK: ''
-  SECOND_VALUE: 'abc'
+  SECOND_VALUE: 'xyz'
   BUILD_NUMBER: $[counter('$(Build.SourceBranchName)_counter', 1)]
 
 jobs:
